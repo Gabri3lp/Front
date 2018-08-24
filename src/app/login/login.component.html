@@ -1,0 +1,12 @@
+<html id="LoginBackground">
+	<div id="LoginBox">
+		<div id="LoginTitle" >Login</div>
+		<div class="LoginSubtitle InputText">Email <br>
+			<input class="LoginInput form-control" (keyup)="login($event)" [(ngModel)]="email" placeholder="email">
+		</div>
+		<div class="LoginSubtitle InputText"> Password <br>
+			<input class="LoginInput form-control"  (keyup)="login($event)" type="Password" [(ngModel)]="pass" placeholder="pass">
+		</div>
+		<button id="LoginBtn" (click)="login()">Iniciar Sesion</button>
+	</div>
+</html>

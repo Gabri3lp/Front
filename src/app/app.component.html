@@ -1,0 +1,9 @@
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<div *ngIf="loginService.hasToken(); then mainPage else login_cmp"></div>
+<ng-template #mainPage >
+    <router-outlet></router-outlet>
+</ng-template>
+
+<ng-template #login_cmp>
+    <router-outlet></router-outlet>
+</ng-template>
