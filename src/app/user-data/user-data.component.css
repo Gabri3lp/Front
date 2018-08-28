@@ -1,0 +1,35 @@
+.Field{
+    display: inline-table;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-left: 20px;
+    width: 200px;
+}/*
+#id{
+    width: 250px;
+}
+#firstName, #lastName, #email, #status, #role{
+    width: 250px;
+}
+#phone, #cellphone, #city{
+    width: 250px;
+}*/
+.Box{
+    display: inline-table;
+    position: relative;
+    left: 19%;
+    height: 88%;
+    width: 60%;
+    box-shadow: 1px 1px 1px;
+    padding-top: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+#buttons{
+    position: relative;
+    left: 60%;
+    width: 100%;
+}
+.btn{
+    margin-right: 10px;
+}

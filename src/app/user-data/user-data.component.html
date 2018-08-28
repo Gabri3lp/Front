@@ -1,0 +1,81 @@
+<app-menu [selected] ="2" ></app-menu> 
+<p class="Title">Detalles</p>
+<p id="Line"></p>
+<body class="Content">
+  <div class="Box">
+    <div class="row">
+      <span class="col">
+        <label >Nombre</label>
+        <input  class="form-control" id="firstName" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.firstName">
+        </span> 
+        <span class="col">
+          <label  >Apellido</label>
+          <input  class="form-control" id="lastName" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.lastName">
+        </span>   
+      </div>  
+    <div class="row">
+        <span class="col">
+          <!--<label >Pais</label>
+          <input  class="form-control" id="country" [disabled]="disabled" placeholder="Pais" [(ngModel)]="user.country">
+          -->
+        </span> 
+    <span class="col">
+        <label >Cedula</label>
+        <input  class="form-control" id="id" [disabled]="disabled" placeholder="id" [(ngModel)]="user.id">
+    </span> 
+  </div>  
+    <div class="row">
+      <span class="col">
+          <label >Estatus</label>
+          <input  class="form-control" id="status" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.status">
+      </span>
+      <span class="col">
+        <label >Rol</label>
+        <input  class="form-control" id="role" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.role">
+      </span>
+    </div>  
+    <div class="row">
+      <span class="col">
+        <label >Telefono Fijo</label>
+        <input  class="form-control" id="phone" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.phone">
+      </span>
+      <span class="col">
+        <label >Celular</label>
+        <input  class="form-control" id="cellphone" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.cellphone">
+      </span>
+    </div>  
+    <div class="row">
+      <span class="col">
+        <label >Ciudad</label>
+        <input  class="form-control" id="city" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.city">
+      </span>
+      <span class="col">
+        <label >Fecha de Nacimiento</label>
+        <input  class="form-control" id="date" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.birthDate">
+      </span>
+    </div> 
+    <div class="row">
+        <span class="col">
+        <label >Dirección</label>
+        <input  class="form-control" id="address" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.address">
+      </span>
+    </div>
+    <div class="row">
+        <span class="col">
+            <label >Email</label>
+            <input  class="form-control" id="email" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.email">
+        </span>
+        <span class="col"  *ngIf="showPass">
+          <label >Contraseña</label>
+          <input  type="password" class="form-control" id="pass" [disabled]="disabled" placeholder="Pass" [(ngModel)]="user.pass">
+        </span>
+      </div>
+      <br>
+    <div class="row">
+      <span class="col" id="buttons">
+          <button class="btn btn-primary mb-2" (click)="submit()">Aceptar</button>
+          <button class="btn btn-danger mb-2" (click)="cancel()">Cancelar</button>
+      </span>
+    </div>
+  </div>
+</body>
