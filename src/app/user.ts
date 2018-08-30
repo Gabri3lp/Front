@@ -10,7 +10,7 @@ export class User {
 		this.birthDate =  '';
 		this.city= '';
 		this.status= '';
-		this.pass= '';
+		this.password= '';
 		this.address= '';
 		this.country= '';
 	}
@@ -24,7 +24,7 @@ export class User {
 	birthDate: string;
 	city: string;
 	status: string; 
-	pass: string;
+	password: string;
 	address: string;
 	country: string;
 

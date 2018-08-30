@@ -7,7 +7,8 @@
         <i class="material-icons" style="font-size:16px;">add</i>
       </button>
     </a> 
-  <table class="table table-hover">
+  <div class="TableContainer">
+  <table class="table table-hover ">
   <thead>
     <tr>
       <th scope="col">Cédula</th>
@@ -24,12 +25,12 @@
       <td>{{user.email}}</td>
       <td>{{user.role}}</td>
       <td>
-        <a routerLink="/users/get/{{user.email}}">
+        <a routerLink="/users/get/{{user.id}}">
           <button type="button" class="btn btn-success" >
             <i class="material-icons" style="font-size:16px;">visibility</i>
           </button>
         </a>
-        <a routerLink="/users/edit/{{user.email}}">
+        <a routerLink="/users/edit/{{user.id}}">
           <button type="button" class="btn btn-warning">
             <i class="material-icons" style="font-size:16px;">mode_edit</i>
           </button>
@@ -41,4 +42,5 @@
     </tr>
   </tbody>
 </table>
+</div>
 </body>

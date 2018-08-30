@@ -24,6 +24,9 @@
     padding-top: 2%;
     padding-left: 2%;
     padding-right: 2%;
+    max-height: 200px;
+    overflow-y: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 #buttons{
     position: relative;

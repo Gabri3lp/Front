@@ -16,7 +16,7 @@ export class UserDataComponent implements OnInit {
   disabled = true;
   showPass: boolean;
   type: string;
-  email: string;
+  id: string;
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -35,19 +35,20 @@ export class UserDataComponent implements OnInit {
       this.disabled = false;
       this.showPass = true;
     }
-    this.email = this.route.snapshot.paramMap.get('email');
-    this.dataBase.getUserByEmail(this.email).subscribe(user => this.user = user);
+    this.id = this.route.snapshot.paramMap.get('id');
+    this.dataBase.getUserById(this.id).subscribe(user => this.user = user);
   }
   submit(){
     switch(this.type){
       case 'edit':{
-        this.dataBase.updateUser(this.user, this.email).subscribe(response =>{
-          if(response)
+        this.dataBase.updateUser(this.user, this.id).subscribe(response =>{
+          if(response){
             alert("Guardado con exito");
+            this.router.navigate(['/users']);
+          }
           else{
             alert("Hubo un problema al guardar el usuario");
-          this.router.navigate(['/users']);
-          return;
+            return;
           }
         });
         break;
@@ -63,8 +64,10 @@ export class UserDataComponent implements OnInit {
           return;
           }
         });
-        
         break;
+      }
+      case "get":{
+        this.router.navigate(['/users']);
       }
     }
   }

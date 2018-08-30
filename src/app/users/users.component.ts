@@ -17,14 +17,16 @@ export class UsersComponent implements OnInit {
   create(){
 
   }
-  delete(email: string){
-    var result = false;
-    this.dataBase.deleteUser(email).subscribe(response => result = response);
-    if(result){
-      alert("Usuario borrado con éxito");
-    }else{
-      alert("Ocurrió un error al borrar el usuario");
-    }
+  delete(id: string){
+    this.dataBase.deleteUser(id).subscribe(response =>{
+      if(response){
+        alert("Usuario borrado con éxito");
+        window.location.reload();
+      }else{
+        alert("Ocurrió un error al borrar el usuario");
+      }
+    });
+    
   }
   update(){
 
