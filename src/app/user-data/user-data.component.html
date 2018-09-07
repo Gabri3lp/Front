@@ -1,5 +1,5 @@
 <app-menu [selected] ="2" ></app-menu> 
-<p class="Title">Detalles</p>
+<p class="Title">{{title}}</p>
 <p id="Line"></p>
 <body class="Content">
   <div class="Box">
@@ -25,13 +25,22 @@
     </span> 
   </div>  
     <div class="row">
-      <span class="col">
-          <label >Estatus</label>
-          <input  class="form-control" id="status" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.status">
+        <span class="col">
+        <label >Estatus</label>
+        <div class="form-group" >
+          <select class="form-control" [disabled]="disabled" (ngModelChange)="setNewStatus($event)" (ngModel)="user.status" >
+            <option [ngValue]="'Activo'" [selected]="user.status == 'Activo'">Activo</option>
+            <option [ngValue]="'Inactivo'" [selected]="user.status == 'Inactivo'">Inactivo</option>
+          </select>
+        </div> 
       </span>
       <span class="col">
         <label >Rol</label>
-        <input  class="form-control" id="role" [disabled]="disabled" placeholder="Nombre" [(ngModel)]="user.role">
+        <div class="form-group" >
+          <select class="form-control" [disabled]="disabled" (ngModelChange)="setNewRole($event)" (ngModel)="roles" >
+            <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.id == user.role.id">{{role.role}}</option>
+          </select>
+        </div>
       </span>
     </div>  
     <div class="row">

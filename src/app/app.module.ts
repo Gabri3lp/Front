@@ -16,6 +16,8 @@ import { UserDataComponent } from './user-data/user-data.component';
 
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { HeaderInterceptor } from './header-interceptor';
+import { HoursComponent } from './hours/hours.component';
+import { HourDataComponent } from './hour-data/hour-data.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +29,8 @@ import { HeaderInterceptor } from './header-interceptor';
     LogoutComponent,
     UsersComponent,
     UserDataComponent,
+    HoursComponent,
+    HourDataComponent,
   ],
   imports: [
     BrowserModule,

@@ -6,6 +6,8 @@ import { AuthGuardService } from './auth-guard.service';
 import { LogoutComponent } from './logout/logout.component';
 import { UsersComponent } from './users/users.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import { HoursComponent } from './hours/hours.component';
+import { HourDataComponent } from './hour-data/hour-data.component';
 
 const routes: Routes = [
   { path: '', component: StartComponent, canActivate: [AuthGuardService] },
@@ -14,6 +16,9 @@ const routes: Routes = [
   { path: 'users', component: UsersComponent, canActivate: [AuthGuardService] },
   { path: 'users/:type/:id', component: UserDataComponent, canActivate: [AuthGuardService]},
   { path: 'users/:type', component: UserDataComponent, canActivate: [AuthGuardService]},
+  { path: 'hours', component: HoursComponent, canActivate: [AuthGuardService] },
+  { path: 'hours/:type/:id', component: HourDataComponent, canActivate: [AuthGuardService]},
+  { path: 'hours/:type', component: HourDataComponent, canActivate: [AuthGuardService]},
 ];
 @NgModule({
   exports: [ RouterModule ],

@@ -3,25 +3,8 @@ import { User } from './user';
 import {Observable,of } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
-import { RequestOptions } from '@angular/http';
-import { HttpHeaders } from '@angular/common/http';
-const USERS = [
-	{id: '26770427', email: "gabriel.jp215@gmail.com", firstName:"Gabriel Jesús", lastName:"Pérez Arellán", 
-	role:"Administrador", phone: '12345', cellphone: '4444444', city:'guayana', status: 'active', 
-	country: 'Venezuela', password: '12345678', address: 'caimito 2', birthDate: '17/02/1997'},
-	{id: '3', email: "jeuss.jp215@gmail.com", firstName:"jesus", lastName:"Pérez", role:"Administrador",
-	phone: '12345', cellphone: '4444444', city:'guayana', status: 'active', country: 'Venezuela', password: '12345678',
-	address: 'caimito 2', birthDate: '17/02/1997'},
-	{id: '6', email: "juan.jp215@gmail.com", firstName:"juan", lastName:"arellan", role:"Administrador",
-	phone: '12345', cellphone: '4444444', city:'guayana', status: 'active', country: 'Venezuela', password: '12345678',
-	address: 'caimito 2', birthDate: '17/02/1997'},
-	{id: '7', email: "pedro.jp215@gmail.com", firstName:"jose", lastName:"Pérez", role:"Administrador",
-	phone: '12345', cellphone: '4444444', city:'guayana', status: 'active', country: 'Venezuela', password: '12345678',
-	address: 'caimito 2', birthDate: '17/02/1997'},
-	{id: '8', email: "jose.jp215@gmail.com", firstName:"pedro", lastName:"Pérez", role:"Administrador",
-	phone: '12345', cellphone: '4444444', city:'guayana', status: 'active', country: 'Venezuela', password: '12345678', 
-	address: 'caimito 2', birthDate: '17/02/1997'},
-];
+import { Hour } from './hour';
+import { Role } from './role';
 
 @Injectable({
   providedIn: 'root'
@@ -43,18 +26,19 @@ export class DataBaseService {
 			if(response['status'] == 'success'){
 				return response['data'];
 			}else{
-				alert("No se encontró el Usuario. Estado: " + response['msg']);
-				return of(new User);
+				alert(response['msg']);
+				return new User;
 			}
 		}		
 		));
   	}
-  	public getUsers(): Observable<User[]>{
-		return this.http.get(this.url + "get/user/all").pipe(map(response =>{
+  	public getUsers(search = ''): Observable<User[]>{
+		return this.http.post(this.url + "get/user/all", {search: search}).pipe(map(response =>{
 			if(response['status'] == 'success'){
 				return response['data'];
 			}else{
-				return null;
+				alert(response['msg']);
+				return new User;
 			}
 		}		
 		));
@@ -64,6 +48,7 @@ export class DataBaseService {
 			if(response['status'] == 'success'){
 				return true;
 			}else{
+				alert(response['msg']);
 				return false;
 			}
 		}		
@@ -75,18 +60,89 @@ export class DataBaseService {
 			if(response['status'] == 'success'){
 				return true;
 			}else{
+				alert(response['msg']);
 				return false;
 			}
 		}		
 		));
   	}
   	public createUser(user: User): Observable<boolean>{
-		//return this.http.post<any>(this.url + "signup", {user}).pipe(map(response =>{
 		return this.http.post<any>(this.url + "signup", user).pipe(map(response =>{
 			if(response['status'] == 'success'){
 				return true;
 			}else{
+				alert(response['msg']);
 				return false;
+			}
+		}		
+		));
+	}
+	
+
+	public getHourById(id: string): Observable<Hour>{
+		return this.http.post(this.url + "get/hour", {id: id}).pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return response['data'];
+			}else{
+				alert(response['msg']);
+				return new Hour;
+			}
+		}		
+		));
+	  }
+	  public getHours(search = ''): Observable<Hour[]>{
+		return this.http.post(this.url + "get/hour/all", {search: search}).pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return response['data'];
+			}else{
+				alert(response['msg']);
+				return new Hour();
+			}
+		}		
+		));
+  	}
+  	public updateHour(hour: Hour): Observable<boolean>{
+		return this.http.post<any>(this.url + "update/hour", hour).pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return true;
+			}else{
+				alert(response['msg']);
+				return false;
+			}
+		}		
+		));
+	  }
+	  
+  	public deleteHour(id: string): Observable<boolean>{
+		return this.http.post(this.url + "delete/hour", {id: id}).pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return true;
+			}else{
+				alert(response['msg']);
+				return false;
+			}
+		}		
+		));
+  	}
+  	public createHour(hour: Hour): Observable<boolean>{
+		return this.http.post<any>(this.url + "create/hour", hour).pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return true;
+			}else{
+				alert(response['msg']);
+				return false;
+			}
+		}		
+		));
+	}
+
+	public getRoles(): Observable<Role[]>{
+		return this.http.get(this.url + "get/role/all").pipe(map(response =>{
+			if(response['status'] == 'success'){
+				return response['data'];
+			}else{
+				alert(response['msg']);
+				return new Hour;
 			}
 		}		
 		));

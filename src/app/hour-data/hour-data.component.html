@@ -1,0 +1,52 @@
+<app-menu [selected] ="3" ></app-menu> 
+<p class="Title">{{title}}</p>
+<p id="Line"></p>
+<body class="Content">
+  <div class="Box">
+    <div class="row">
+        <span class="col">
+          <label  >Usuario</label>
+          <input  class="form-control" id="user_id" [disabled]="disabled" placeholder="Usuario" [(ngModel)]="hour.user_id">
+        </span>   
+      </div> 
+      <div class="row">
+        <span class="col">
+          <label >Fecha Inicial (d-m-a h:m)</label>
+          <input  class="form-control" id="initialDate" [disabled]="disabled" placeholder="Fecha Inicial" [(ngModel)]="hour.initialDate">
+          </span> 
+          <span class="col">
+            <label  >Fecha Final (d-m-a h:m)</label>
+            <input  class="form-control" id="finalDate" [disabled]="disabled" placeholder="Fecha Final" [(ngModel)]="hour.finalDate">
+          </span>   
+        </div>  
+        <div class="row">
+          <span class="col">
+            <label >Estatus</label>
+            <div class="form-group" >
+              <select class="form-control" [disabled]="disabled" (ngModelChange)="setNewStatus($event)" (ngModel)="hour.status" >
+                <option [ngValue]="'En Desarrollo'" [selected]="hour.status == 'En Desarrollo'">En Desarrollo</option>
+                <option [ngValue]="'Completado'" [selected]="hour.status == 'Completado'">Completado</option>
+                <option [ngValue]="'Cancelada'" [selected]="hour.status == 'Cancelada'">Cancelada</option>
+              </select>
+            </div>  
+          </span> 
+          <span *ngIf="showTotal" class="col">
+              <label >Total</label>
+              <input  class="form-control" id="diff" [disabled]="disabled" placeholder="Total" [(ngModel)]="hour.total">
+            </span>  
+        </div> 
+        <div class="row">
+          <span class="col">
+            <label  >Descripción</label>
+            <textarea  class="form-control" rows="5" id="description" [disabled]="disabled" placeholder="Descripción" [(ngModel)]="hour.description"></textarea>
+          </span> 
+        </div> 
+      <br>
+      <div class="row">
+        <span class="col" id="buttons">
+            <button class="btn btn-primary mb-2" (click)="submit()">Aceptar</button>
+            <button class="btn btn-danger mb-2" (click)="cancel()">Cancelar</button>
+        </span>
+      </div>
+  </div>
+</body>

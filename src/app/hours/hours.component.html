@@ -1,0 +1,52 @@
+<app-menu [selected] ="3" ></app-menu> 
+<p class="Title">Horas Extra</p>
+<p id="Line"></p>
+<body class="Content">
+    <div class="form-inline" >
+        <input class="form-control mr-sm-2" [(ngModel)]="search" (keydown)="keyDown($event)" style="width: 86%;" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchHours()" type="submit">Search</button>
+        <a routerLink="/hours/create" >
+          <button class="btn btn-primary my-2 my-sm-0" type="submit" style="padding-top: 0;  margin-left: 10px; font-size: 20px;">+</button>
+        </a>
+      </div><br> 
+  <div class="TableContainer">
+  <table class="table table-hover ">
+  <thead>
+    <tr>
+      <th scope="col">Id</th>
+      <th scope="col">Usuario</th>
+      <th scope="col">Estatus</th>
+      <th scope="col">Fecha Inicio</th>
+      <th scope="col">Fecha Fin</th>
+      <th scope="col">Total</th>
+      <th scope="col">Acción</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let hour of hours" >
+      <th scope="row">{{hour.id}}</th>
+      <td>{{hour.user_id}}</td>
+      <td>{{hour.status}}</td>
+      <td>{{hour.initialDate  | date:'dd-MM-yyyy HH:mm'}}</td>
+      <td>{{hour.finalDate  | date:'dd-MM-yyyy HH:mm'}}</td>
+      <td>{{hour.total}}</td>
+      <td>
+        <a routerLink="/hours/get/{{hour.id}}">
+          <button type="button" class="btn btn-success crudBtn" >
+            <i class="material-icons" style="font-size:16px;">visibility</i>
+          </button>
+        </a>
+        <a routerLink="/hours/edit/{{hour.id}}">
+          <button type="button" class="btn btn-warning crudBtn">
+            <i class="material-icons" style="font-size:16px;">mode_edit</i>
+          </button>
+        </a>
+        <button type="button" (click)="delete(hour.id)" class="btn btn-danger crudBtn">
+          <i class="material-icons" style="font-size:16px;">delete</i>
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>

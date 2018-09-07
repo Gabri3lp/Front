@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { User } from '../user';
 import { DataBaseService } from '../database.service';
 
@@ -9,30 +9,34 @@ import { DataBaseService } from '../database.service';
 })
 export class UsersComponent implements OnInit {
   private users: User[]; 
+  @Input() search = '';
   constructor(private dataBase: DataBaseService) { }
+
 
   ngOnInit() {
     this.dataBase.getUsers().subscribe(users => this.users = users);
-  }
-  create(){
-
   }
   delete(id: string){
     this.dataBase.deleteUser(id).subscribe(response =>{
       if(response){
         alert("Usuario borrado con éxito");
-        window.location.reload();
+        for (let i = 0; i < this.users.length; i++) {
+          if(this.users[i].id == id)
+            this.users.splice(i, 1);
+        }
       }else{
         alert("Ocurrió un error al borrar el usuario");
       }
     });
     
   }
-  update(){
-
+  
+  searchUsers(){
+    this.dataBase.getUsers(this.search).subscribe(users => this.users = users);
   }
-  select(){
-    
+  keyDown(event){
+    if(event.keyCode == 13)
+      this.searchUsers();
   }
 
 }

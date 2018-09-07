@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import { User } from '../user';
 import { DataBaseService } from '../database.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Role } from '../role';
 
 
 
@@ -17,6 +18,8 @@ export class UserDataComponent implements OnInit {
   showPass: boolean;
   type: string;
   id: string;
+  roles: Role[];
+  title: string;
   constructor(
     private route: ActivatedRoute,
     private location: Location,
@@ -25,16 +28,21 @@ export class UserDataComponent implements OnInit {
   )  { }
 
   ngOnInit() {
+    this.dataBase.getRoles().subscribe(roles => this.roles = roles);
     this.type = this.route.snapshot.paramMap.get('type');
     if(this.type == 'create'){
       this.disabled = false;
       this.showPass = true;
+      this.title = 'Agregar'
       return;
     }
     if(this.type == 'edit'){
       this.disabled = false;
       this.showPass = true;
+      this.title = 'Editar';
     }
+    if(this.type == 'get')
+      this.title = 'Detalles';
     this.id = this.route.snapshot.paramMap.get('id');
     this.dataBase.getUserById(this.id).subscribe(user => this.user = user);
   }
@@ -46,10 +54,6 @@ export class UserDataComponent implements OnInit {
             alert("Guardado con exito");
             this.router.navigate(['/users']);
           }
-          else{
-            alert("Hubo un problema al guardar el usuario");
-            return;
-          }
         });
         break;
       }
@@ -58,10 +62,6 @@ export class UserDataComponent implements OnInit {
           if(response){
             alert("Usuario creado con exito");
             this.router.navigate(['/users']);
-          }
-          else{
-            alert("Hubo un problema al crear el usuario");
-          return;
           }
         });
         break;
@@ -73,6 +73,12 @@ export class UserDataComponent implements OnInit {
   }
   cancel(){
     this.router.navigate(['/users']);
+  }
+  setNewRole(role: Role){
+    this.user.role = role;
+  }
+  setNewStatus(status: string){
+    this.user.status = status;
   }
 
 }
