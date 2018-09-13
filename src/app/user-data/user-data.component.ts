@@ -28,7 +28,6 @@ export class UserDataComponent implements OnInit {
   )  { }
 
   ngOnInit() {
-    this.dataBase.getRoles().subscribe(roles => this.roles = roles);
     this.type = this.route.snapshot.paramMap.get('type');
     if(this.type == 'create'){
       this.disabled = false;
@@ -45,6 +44,7 @@ export class UserDataComponent implements OnInit {
       this.title = 'Detalles';
     this.id = this.route.snapshot.paramMap.get('id');
     this.dataBase.getUserById(this.id).subscribe(user => this.user = user);
+    this.dataBase.getRoles().subscribe(roles => this.roles = roles);
   }
   submit(){
     switch(this.type){
@@ -74,8 +74,8 @@ export class UserDataComponent implements OnInit {
   cancel(){
     this.router.navigate(['/users']);
   }
-  setNewRole(role: Role){
-    this.user.role = role;
+  setNewRole(roleId: string){
+    this.user.role.id = roleId;
   }
   setNewStatus(status: string){
     this.user.status = status;

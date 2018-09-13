@@ -13,7 +13,6 @@ export class DataBaseService {
 	url = "http://127.0.0.1:8000/api/";
 	currentUser: User;
 	private updatedUser;
-	
 	constructor(
 		private http: HttpClient
 	) { }
@@ -146,5 +145,18 @@ export class DataBaseService {
 			}
 		}		
 		));
+	}
+
+	generateTotalReport(initialDate: Date, finalDate: Date){
+		return this.http.post(this.url + "report/total", 
+			{initialDate: initialDate, finalDate: finalDate}
+			,{responseType: "blob"}
+			).pipe(map(response =>{
+				if(response.type == 'application/pdf'){
+					return response;
+				}
+				alert("Campos Invalidos");
+			})
+			);
 	}
 }

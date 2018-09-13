@@ -5,5 +5,5 @@ export class Hour {
     finalDate: Date;
     description: string;
     status: string;
-    difference: string;
+    total: string;
 }

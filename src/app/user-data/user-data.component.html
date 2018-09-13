@@ -29,16 +29,18 @@
         <label >Estatus</label>
         <div class="form-group" >
           <select class="form-control" [disabled]="disabled" (ngModelChange)="setNewStatus($event)" (ngModel)="user.status" >
-            <option [ngValue]="'Activo'" [selected]="user.status == 'Activo'">Activo</option>
-            <option [ngValue]="'Inactivo'" [selected]="user.status == 'Inactivo'">Inactivo</option>
+            <option [ngValue]="'Activo'" [selected]='user.status == "Activo"'>Activo</option>
+            <option [ngValue]="'Inactivo'" [selected]='user.status == "Inactivo"'>Inactivo</option>
           </select>
         </div> 
       </span>
       <span class="col">
         <label >Rol</label>
-        <div class="form-group" >
+        <div class="form-group">
           <select class="form-control" [disabled]="disabled" (ngModelChange)="setNewRole($event)" (ngModel)="roles" >
-            <option *ngFor="let role of roles" [ngValue]="role" [selected]="role.id == user.role.id">{{role.role}}</option>
+            <option [ngValue]="'1'" [selected]="user.role.id == '1'">SuperAdmin</option>
+            <option [ngValue]="'2'" [selected]="user.role.id == '2'">Admin</option>
+            <option [ngValue]="'3'" [selected]="user.role.id == '3'">Usuario</option>
           </select>
         </div>
       </span>

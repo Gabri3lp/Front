@@ -8,6 +8,7 @@ import { UsersComponent } from './users/users.component';
 import { UserDataComponent } from './user-data/user-data.component';
 import { HoursComponent } from './hours/hours.component';
 import { HourDataComponent } from './hour-data/hour-data.component';
+import { ReportsComponent } from './reports/reports.component';
 
 const routes: Routes = [
   { path: '', component: StartComponent, canActivate: [AuthGuardService] },
@@ -19,6 +20,7 @@ const routes: Routes = [
   { path: 'hours', component: HoursComponent, canActivate: [AuthGuardService] },
   { path: 'hours/:type/:id', component: HourDataComponent, canActivate: [AuthGuardService]},
   { path: 'hours/:type', component: HourDataComponent, canActivate: [AuthGuardService]},
+  { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardService]},
 ];
 @NgModule({
   exports: [ RouterModule ],

@@ -1,0 +1,28 @@
+<app-menu [selected] ="4" ></app-menu> 
+<p class="Title">Reportes</p>
+<p id="Line"></p>
+<body class="Content">
+  
+    <h1>Total</h1>
+    <div class="row">
+        <div class="col">
+          <label >Fecha Inicial (d-m-a)</label>
+          <input  class="form-control" id="initialDate" [disabled]="disabled" placeholder="Fecha Inicial" [(ngModel)]="initialDate">
+        </div> 
+         <div class="col">
+            <label  >Fecha Final (d-m-a)</label>
+            <input  class="form-control" id="finalDate" [disabled]="disabled" placeholder="Fecha Final" [(ngModel)]="finalDate">
+        </div>   
+    </div><br>
+    <div class="row"> 
+      <div class="col">
+        <button class="btn btn-primary mb-2" (click)="generateTotalReport()">Generar Reporte Total</button>
+        <a *ngIf="fileTotalReady" [href]="fileTotalUrl" download="Report.pdf">Download File</a>
+      </div>
+      <div class="col">
+        <button class="btn btn-primary mb-2" (click)="generateDetailedReport()">Generar Reporte Detallado</button> <span> </span>
+        <a *ngIf="fileDetailedReady" [href]="fileDetailedUrl" download="Report.pdf">Download File</a>
+      </div>
+    </div>
+
+</body>
