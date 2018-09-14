@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { MessageComponent } from './message/message.component';
 import { AppRoutingModule } from './/app-routing.module';
 import { MenuComponent } from './menu/menu.component';
 import { StartComponent } from './start/start.component';
@@ -24,7 +23,6 @@ import { ReportsComponent } from './reports/reports.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    MessageComponent,
     MenuComponent,
     StartComponent,
     LogoutComponent,

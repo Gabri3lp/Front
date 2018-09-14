@@ -14,7 +14,6 @@ const httpOptions = {
 })
 export class LoginService {
 	private url = "http://127.0.0.1:8000/api/login";
-  currentUser: User;
   constructor(private http: HttpClient, private router: Router) { 
   }
 
@@ -29,7 +28,6 @@ export class LoginService {
       .pipe(map(response => {
         if(response['status'] == "success"){
           localStorage.setItem('token', JSON.stringify(response['token']));
-          this.currentUser = response['user'];
           this.router.navigate(['/'], { queryParams: {}});
         }
         return response;

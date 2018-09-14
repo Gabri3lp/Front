@@ -18,8 +18,8 @@ const routes: Routes = [
   { path: 'users/:type/:id', component: UserDataComponent, canActivate: [AuthGuardService]},
   { path: 'users/:type', component: UserDataComponent, canActivate: [AuthGuardService]},
   { path: 'hours', component: HoursComponent, canActivate: [AuthGuardService] },
+  { path: 'hours/:id', component: HoursComponent, canActivate: [AuthGuardService] },
   { path: 'hours/:type/:id', component: HourDataComponent, canActivate: [AuthGuardService]},
-  { path: 'hours/:type', component: HourDataComponent, canActivate: [AuthGuardService]},
   { path: 'reports', component: ReportsComponent, canActivate: [AuthGuardService]},
 ];
 @NgModule({

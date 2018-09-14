@@ -30,6 +30,10 @@ export class HourDataComponent implements OnInit {
       this.disabled = false;
       this.showPass = true;
       this.title = "Agregar";
+      this.id = this.route.snapshot.paramMap.get('id');
+      if(this.id != '0'){
+        this.hour.user_id = this.id;
+      }
       return;
     }
     if(this.type == 'edit'){

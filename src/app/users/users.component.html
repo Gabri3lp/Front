@@ -1,6 +1,4 @@
 <app-menu [selected] ="2" ></app-menu> 
-<p class="Title">Usuarios</p>
-<p id="Line"></p>
 <body class="Content">
     <div class="form-inline" >
       <input class="form-control mr-sm-2" [(ngModel)]="search" (keydown)="keyDown($event)" style="width: 86%;" type="search" placeholder="Search" aria-label="Search">
@@ -18,6 +16,7 @@
       <th scope="col">Correo</th>
       <th scope="col">Rol</th>
       <th scope="col">Acción</th>
+      <th scope="col">Horas</th>
     </tr>
   </thead>
   <tbody>
@@ -41,6 +40,16 @@
           <i class="material-icons" style="font-size:16px;">delete</i>
         </button>
       </td>
+      <td>
+          <a routerLink="/hours/{{user.id}}">
+            <button type="button" class="btn btn-success crudBtn" >
+              <i class="material-icons" style="font-size:16px;">visibility</i>
+            </button>
+          </a>
+          <a routerLink="/hours/create/{{user.id}}">
+            <button class="btn btn-primary crudBtn" type="submit">+</button>
+          </a>
+        </td>
     </tr>
   </tbody>
 </table>

@@ -1,6 +1,4 @@
 <app-menu [selected] ="4" ></app-menu> 
-<p class="Title">Reportes</p>
-<p id="Line"></p>
 <body class="Content">
   
     <h1>Total</h1>
@@ -21,7 +19,7 @@
       </div>
       <div class="col">
         <button class="btn btn-primary mb-2" (click)="generateDetailedReport()">Generar Reporte Detallado</button> <span> </span>
-        <a *ngIf="fileDetailedReady" [href]="fileDetailedUrl" download="Report.pdf">Download File</a>
+        <a *ngIf="fileDetailedReady" [href]="fileDetailedUrl" download="Report.pdf" style="padding-left: 100px;">Download File</a>
       </div>
     </div>
 

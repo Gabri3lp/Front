@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { User } from './user';
 import {Observable,of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, catchError } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
 import { Hour } from './hour';
 import { Role } from './role';
@@ -11,14 +11,28 @@ import { Role } from './role';
 })
 export class DataBaseService {
 	url = "http://127.0.0.1:8000/api/";
-	currentUser: User;
 	private updatedUser;
 	constructor(
 		private http: HttpClient
 	) { }
 
-	public setCurrentUser(user: User){
-		this.currentUser;
+	private refreshToken<T> (operation = 'operation', result?: T) {
+		return (error: any): Observable<T> => {
+			if(error.status == '401'){
+				this.http.get(this.url + "token/refresh").subscribe(response =>{
+					if(response['status'] == "success"){
+						localStorage.setItem('token', JSON.stringify(response['data']));
+						location.reload();
+					}
+				});
+		}
+		  return of(result as T);
+		};
+	  }
+	public getCurrentUser(): Observable<User>{
+		return this.http.get(this.url + "currentUser").pipe(map(response =>{return response['data'];})
+		,catchError(this.refreshToken('getCurrentUser'))
+		);
 	}
   	public getUserById(id: string): Observable<User>{
 		return this.http.post(this.url + "get/user", {id: id}).pipe(map(response =>{

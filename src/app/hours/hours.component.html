@@ -1,11 +1,9 @@
 <app-menu [selected] ="3" ></app-menu> 
-<p class="Title">Horas Extra</p>
-<p id="Line"></p>
 <body class="Content">
     <div class="form-inline" >
         <input class="form-control mr-sm-2" [(ngModel)]="search" (keydown)="keyDown($event)" style="width: 86%;" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success my-2 my-sm-0" (click)="searchHours()" type="submit">Search</button>
-        <a routerLink="/hours/create" >
+        <a routerLink="/hours/create/0" >
           <button class="btn btn-primary my-2 my-sm-0" type="submit" style="padding-top: 0;  margin-left: 10px; font-size: 20px;">+</button>
         </a>
       </div><br> 
@@ -29,7 +27,7 @@
       <td>{{hour.status}}</td>
       <td>{{hour.initialDate  | date:'dd-MM-yyyy HH:mm'}}</td>
       <td>{{hour.finalDate  | date:'dd-MM-yyyy HH:mm'}}</td>
-      <td>{{hour.total}}</td>
+      <td>{{hour.total}} </td>
       <td>
         <a routerLink="/hours/get/{{hour.id}}">
           <button type="button" class="btn btn-success crudBtn" >

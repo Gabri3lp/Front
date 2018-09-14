@@ -8,8 +8,8 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./reports.component.css']
 })
 export class ReportsComponent implements OnInit {
-  @Input() initialDate;
-  @Input() finalDate;
+  @Input() initialDate = null;
+  @Input() finalDate = null;
   fileTotalReady = false;
   fileDetailedReady = false;
   fileTotalUrl;
@@ -30,15 +30,5 @@ export class ReportsComponent implements OnInit {
       }
     });
   }
-  generateDetailedReport(){
-    this.fileDetailedReady = false;
-    this.dataBase.generateTotalReport(this.initialDate, this.finalDate).subscribe(result => {
-      if(result != null){
-        this.fileDetailedUrl = this.sanitizer.bypassSecurityTrustResourceUrl(window.URL.createObjectURL(result));
-        this.fileDetailedReady = true;
-      }
-    });
-  }
-
 
 }
